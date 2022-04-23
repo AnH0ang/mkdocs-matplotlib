@@ -1,0 +1,17 @@
+name: Code Quality
+
+on:
+  pull_request:
+    paths-ignore:
+      - docs/**
+  push:
+    branches: [master, main, dev]
+    paths-ignore:
+      - docs/**
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    name: Linting
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pre-commit/action@v2.0.3
