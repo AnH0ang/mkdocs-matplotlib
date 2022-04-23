@@ -8,7 +8,7 @@ message_template = "[{{tag1}}:{{tag2}}] {{message}}"
 example = "MOD:ENH Added linear regression to toolstack"
 schema = "<type> <body>"
 schema_pattern = "(\\[[A-Z]+:[A-Z]+\\])(\\s.*)"
-bump_pattern = "[BREAK|FIX|FEAT|ENH|ICM|PERF|DEL]"
+bump_pattern = "(BREAK|FIX|FEAT|ENH|ICM|PERF|DEL)"
 bump_map = { "BREAK" = "MAJOR", "DEL" = "MINOR", "ENH" = "MINOR", "ICM" = "MINOR", "FEAT" = "MINOR", "FIX" = "PATCH", "PERF" = "PATCH" }
 change_type_order = ["BREAK", "FEAT", "FIX", "REF", "PERF"]
 
