@@ -1,6 +1,6 @@
 .PHONY: test
 test:
-	cd tests; sh test_build.sh
+	cd tests; ../.venv/bin/mkdocs build
 
 .PHONY: documentation
 documentation:
