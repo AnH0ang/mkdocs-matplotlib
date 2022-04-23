@@ -6,11 +6,11 @@ on:
     branches:
       - master
       - dev
-  pull_request:
-    paths-ignore:
-      - docs/**
-    branches:
-      - "**"
+  # pull_request:
+  #   paths-ignore:
+  #     - docs/**
+  #   branches:
+  #     - "**"
 jobs:
   test:
     strategy:
