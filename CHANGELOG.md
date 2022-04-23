@@ -1,3 +1,12 @@
+## 0.5.0 (2022-04-23)
+
+
+- Merge pull request #8 from AnHo4ng/dev
+- Update
+- [ORG:ENH] Soften Requirements
+- [OPS:FEAT] Add README badges
+- [CI:FEAT] Do not run cq pipelines on bump
+
 ## 0.4.0 (2022-04-23)
 
 
