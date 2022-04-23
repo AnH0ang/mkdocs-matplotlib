@@ -1,3 +1,10 @@
+## 0.4.0 (2022-04-23)
+
+
+- Merge pull request #7 from AnHo4ng/dev
+- Fix Read the Docs Config
+- [ORG:FEAT] Update config for read the docs
+
 ## 0.3.0 (2022-04-23)
 
 
