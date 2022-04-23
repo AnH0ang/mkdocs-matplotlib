@@ -1,0 +1,10 @@
+site_name: "Test Site"
+site_description: "Test Site for Testing"
+use_directory_urls: false
+
+plugins:
+  - mkdocs_matplotlib
+
+nav:
+  - index.md
+  - text/text.md

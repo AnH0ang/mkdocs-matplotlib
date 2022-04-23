@@ -1,0 +1,19 @@
+[data-md-color-scheme="statworx"] {
+  --md-primary-fg-color: #000000;
+  --md-primary-fg-color--dark: #0000ff;
+  --md-typeset-a-color: #0000ff;
+  --md-primary-bg-color: #ffffff;
+  --md-default-fg-color: #666666;
+  --md-default-bg-color: #ffffff;
+  --md-accent-fg-color: #0000ff;
+  --md-text-font: "Epilogue", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  --md-footer-bg-color: #0000ff;
+  --md-footer-fg-color: #ffffff;
+  --md-footer-bg-color--dark: #000000;
+  --md-footer-fg-color--light: #ffffff;
+}
+
+.md-content__inner>h1 {
+  color: #000000;
+  font-weight: bold;
+}

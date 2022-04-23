@@ -1,0 +1,93 @@
+site_name: "Mkdocs-Matplotlib"
+site_description: "Live rendering of python code using matplotlib"
+copyright: Made by STATWORX
+use_directory_urls: false
+
+theme:
+  name: material
+  palette:
+    - schema: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/git-alt
+  features:
+    - search.highlight
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - content.code.annotate
+    - toc.integrate
+    - navigation.top
+
+extra_css:
+  - assets/css/style.css
+  - assets/css/material.css
+  - assets/css/mkdocstrings.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/statworx
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/@statworx_blog
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/statworx
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/statworx
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/statworx
+    - icon: fontawesome/brands/xing
+      link: https://www.xing.com/companies/statworx
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/statworx
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - mkdocs_matplotlib
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: yes
+          rendering:
+            merge_init_into_class: false
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: false
+            show_if_no_docstring: false
+      watch:
+        - src
+nav:
+  - Overview: index.md
+  - Contribution Guide: markdown/contribution.md
+  - Changelog: markdown/changelog.md
+  - Licence: markdown/licence.md
+  - Code Documentation: markdown/code.md
