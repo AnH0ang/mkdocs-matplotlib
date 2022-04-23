@@ -44,7 +44,7 @@ jobs:
       - name: Build
         run: |
           poetry build
-          poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_TOKEN }}
+          poetry publish -u __token__ -p ${{ secrets.PYPI_TOKEN }}
 
       - name: Create Release
         uses: ncipollo/release-action@v1
