@@ -18,6 +18,7 @@ beautifulsoup4 = ">=4.7.1"
 seaborn = ">=0.10.0"
 
 [tool.poetry.dev-dependencies]
+pygments = "2.11.2"             # HACK: upgrading this leads to a bug with mkdocstrings
 black = ">=22.3.0"
 commitizen = ">=2.21.2"
 darglint = ">=1.8.1"
