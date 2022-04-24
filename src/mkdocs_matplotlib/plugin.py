@@ -1,7 +1,7 @@
 import base64
 import tempfile
 from textwrap import dedent
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from bs4 import BeautifulSoup
 from mkdocs.config.base import Config
@@ -12,26 +12,39 @@ from mkdocs.structure.pages import Page
 RENDER_SWITCH = "# mkdocs: render"
 
 
-def _rendered_image_to_dir(save_img_dir: str, render_code: str) -> None:
+def _rendered_image_to_dir(
+    save_img_dir: str,
+    render_code: str,
+    global_namespace: Optional[Dict[str, Any]] = None,
+    local_namespace: Optional[Dict[str, Any]] = None,
+) -> bool:
     # snippet to save a figure
     clearplot_code = """
     import matplotlib.pyplot as plt
-    plt.figure()
     """
     clearplot_code = dedent(clearplot_code)
 
-    savefig_code = f"""
-    plt.savefig("{save_img_dir}")
-    plt.close()
-    """
-    savefig_code = dedent(savefig_code)
+    savefig_code = f'plt.savefig("{save_img_dir}")'
+    closefig_code = "plt.close()"
+
+    # create namespace if not passed
+    global_namespace = {} if global_namespace is None else global_namespace
+    local_namespace = {} if local_namespace is None else local_namespace
 
     # render image to
-    global_namespace: Dict[str, Any] = {}
-    local_namespace: Dict[str, Any] = {}
     exec(clearplot_code, global_namespace, local_namespace)
     exec(render_code, global_namespace, local_namespace)
-    exec(savefig_code, global_namespace, local_namespace)
+
+    is_empty: bool = eval(
+        "not bool(plt.gcf().get_axes())", global_namespace, local_namespace
+    )
+
+    if not is_empty:
+        exec(savefig_code, global_namespace, local_namespace)
+
+    exec(closefig_code, global_namespace, local_namespace)
+
+    return is_empty
 
 
 class RenderPlugin(BasePlugin):
@@ -60,6 +73,11 @@ class RenderPlugin(BasePlugin):
             Html with rendered images added.
         """
         soup = BeautifulSoup(html, features="html.parser")
+
+        # create namespace
+        global_namespace: Dict[str, Any] = {}
+        local_namespace: Dict[str, Any] = {}
+
         for code_tag in soup.find_all("code"):
             temp_file = tempfile.NamedTemporaryFile(suffix=".png").name
 
@@ -69,15 +87,18 @@ class RenderPlugin(BasePlugin):
 
             # only render if cell start with correct comment
             if code_tag.text.startswith(RENDER_SWITCH):
-                _rendered_image_to_dir(temp_file, code_tag.text)
+                is_empty = _rendered_image_to_dir(
+                    temp_file, code_tag.text, global_namespace, local_namespace
+                )
 
                 # insert image tag
-                with open(temp_file, "rb") as f:
-                    encoded = base64.b64encode(f.read()).decode("ascii")
-                    img_tag = soup.new_tag(
-                        "img", src="data:image/png;base64,{}".format(encoded)
-                    )
-                    code_tag.parent.insert_after(img_tag)
-                    img_tag.wrap(soup.new_tag("center"))
+                if not is_empty:
+                    with open(temp_file, "rb") as f:
+                        encoded = base64.b64encode(f.read()).decode("ascii")
+                        img_tag = soup.new_tag(
+                            "img", src="data:image/png;base64,{}".format(encoded)
+                        )
+                        code_tag.parent.insert_after(img_tag)
+                        img_tag.wrap(soup.new_tag("center"))
 
         return str(soup)
