@@ -108,7 +108,7 @@ class RenderPlugin(BasePlugin):
                         encoded = base64.b64encode(f.read()).decode("ascii")
                         img_tag = soup.new_tag(
                             "img",
-                            src="data:image/png;base64,{}".format(encoded),
+                            src="data:image/png;base64," + str(encoded),
                             width="70%",
                         )
                         parent_code_tag = code_tag.parent
