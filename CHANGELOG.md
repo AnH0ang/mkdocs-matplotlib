@@ -1,3 +1,10 @@
+## 0.8.4 (2022-04-24)
+
+
+- Merge pull request #15 from AnHo4ng/dev
+- Fix
+- [ORG:FIX] Fix pygments bug using mkdocs
+
 ## 0.8.3 (2022-04-24)
 
 
