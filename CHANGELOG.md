@@ -1,3 +1,10 @@
+## 0.8.3 (2022-04-24)
+
+
+- Merge pull request #14 from AnHo4ng/dev
+- Fix
+- [ORG:FIX] Adjust width of plots
+
 ## 0.8.2 (2022-04-24)
 
 
