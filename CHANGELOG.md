@@ -1,3 +1,12 @@
+## 0.6.0 (2022-04-24)
+
+
+- Merge pull request #9 from AnHo4ng/dev
+- Fix
+- [MOD:TEST] Update plot in test documentation
+- [ORG:FIX] Clean canvas after each plot
+- [OPS:FEAT] Update metadata in pyproject.toml
+
 ## 0.5.0 (2022-04-23)
 
 
