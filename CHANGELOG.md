@@ -1,3 +1,10 @@
+## 0.8.1 (2022-04-24)
+
+
+- Merge pull request #12 from AnHo4ng/dev
+- Fix
+- [ORG:FIX] Fix label cut of when saving image
+
 ## 0.8.0 (2022-04-24)
 
 
