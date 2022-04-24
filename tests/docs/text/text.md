@@ -1,9 +1,16 @@
 # Test
 
+```python
+# mkdocs: render
+def foo():
+    ...
+```
+
 ## Pair Plot
 
 ```python
 # mkdocs: render
+# mkdocs: hideoutput
 
 import seaborn as sns
 
@@ -16,6 +23,7 @@ sns.pairplot(df, hue="species")
 
 ```python
 # mkdocs: render
+# mkdocs: hidecode
 import seaborn as sns
 
 # Load the penguins dataset
