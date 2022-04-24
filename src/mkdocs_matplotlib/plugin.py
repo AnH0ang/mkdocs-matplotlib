@@ -10,6 +10,8 @@ from mkdocs.structure.files import Files
 from mkdocs.structure.pages import Page
 
 RENDER_SWITCH = "# mkdocs: render"
+HIDECODE_SWITCH = "# mkdocs: hidecode"
+HIDEOUTPUT_SWITCH = "# mkdocs: hideoutput"
 
 
 def _rendered_image_to_dir(
@@ -79,6 +81,12 @@ class RenderPlugin(BasePlugin):
         local_namespace: Dict[str, Any] = {}
 
         for code_tag in soup.find_all("code"):
+            raw_code: str = code_tag.text
+            code_lines = raw_code.splitlines()
+            is_render = RENDER_SWITCH in code_lines
+            is_hidecode = HIDECODE_SWITCH in code_lines
+            is_hideoutput = HIDEOUTPUT_SWITCH in code_lines
+
             temp_file = tempfile.NamedTemporaryFile(suffix=".png").name
 
             # skip if not a multi line code cell
@@ -86,19 +94,23 @@ class RenderPlugin(BasePlugin):
                 continue
 
             # only render if cell start with correct comment
-            if code_tag.text.startswith(RENDER_SWITCH):
+            if is_render:
                 is_empty = _rendered_image_to_dir(
                     temp_file, code_tag.text, global_namespace, local_namespace
                 )
 
                 # insert image tag
-                if not is_empty:
+                if not is_hideoutput and not is_empty:
                     with open(temp_file, "rb") as f:
                         encoded = base64.b64encode(f.read()).decode("ascii")
                         img_tag = soup.new_tag(
                             "img", src="data:image/png;base64,{}".format(encoded)
                         )
-                        code_tag.parent.insert_after(img_tag)
+                        parent_code_tag = code_tag.parent
+                        parent_code_tag.insert_after(img_tag)
                         img_tag.wrap(soup.new_tag("center"))
+
+                        if is_hidecode:
+                            parent_code_tag.decompose()
 
         return str(soup)
