@@ -1,3 +1,10 @@
+## 0.7.0 (2022-04-24)
+
+
+- Merge pull request #10 from AnHo4ng/dev
+- Add global Namespace
+- [ORG:FEAT] Add global namespace for code snippets
+
 ## 0.6.0 (2022-04-24)
 
 
