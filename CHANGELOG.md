@@ -1,3 +1,10 @@
+## 0.9.1 (2022-04-24)
+
+
+- Merge pull request #16 from AnHo4ng/dev
+- Fix
+- [ORG:FIX] Plot Figures as Svg
+
 ## 0.9.0 (2022-04-24)
 
 
