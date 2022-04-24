@@ -14,15 +14,22 @@ RENDER_SWITCH = "# mkdocs: render"
 
 def _rendered_image_to_dir(save_img_dir: str, render_code: str) -> None:
     # snippet to save a figure
-    savefig_code = f"""
+    clearplot_code = """
     import matplotlib.pyplot as plt
+    plt.figure()
+    """
+    clearplot_code = dedent(clearplot_code)
+
+    savefig_code = f"""
     plt.savefig("{save_img_dir}")
+    plt.close()
     """
     savefig_code = dedent(savefig_code)
 
     # render image to
     global_namespace: Dict[str, Any] = {}
     local_namespace: Dict[str, Any] = {}
+    exec(clearplot_code, global_namespace, local_namespace)
     exec(render_code, global_namespace, local_namespace)
     exec(savefig_code, global_namespace, local_namespace)
 

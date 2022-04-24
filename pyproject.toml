@@ -4,6 +4,11 @@ version = "0.5.0"
 description = "Live rendering of python code using matplotlib"
 authors = ["An Hoang <an.hoang@statworx.com>"]
 readme = "README.md"
+license = "MIT"
+keywords = ["mkdocs", "matplotlib", "documentation"]
+repository = "https://github.com/AnHo4ng/mkdocs-matplotlib"
+homepage = "https://mkdocs-matplotlib.readthedocs.io/en/latest/"
+documentation = "https://mkdocs-matplotlib.readthedocs.io/en/latest/"
 
 [tool.poetry.dependencies]
 python = ">=3.8.9,<4.0"
