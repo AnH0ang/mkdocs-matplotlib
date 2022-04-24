@@ -1,3 +1,11 @@
+## 0.8.0 (2022-04-24)
+
+
+- Merge pull request #11 from AnHo4ng/dev
+- Add behaviour tags
+- Merge remote-tracking branch 'origin/master' into dev
+- [OPS:FEAT] Add hidecode and hideoutput switch
+
 ## 0.7.0 (2022-04-24)
 
 
