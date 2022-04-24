@@ -27,8 +27,7 @@ def _rendered_image_to_dir(
     clearplot_code = dedent(clearplot_code)
 
     savefig_code = f"""
-    plt.tight_layout()
-    plt.savefig("{save_img_dir}")
+    plt.savefig("{save_img_dir}", bbox_inches='tight')
     """
     savefig_code = dedent(savefig_code)
     closefig_code = "plt.close()"
