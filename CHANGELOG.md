@@ -1,3 +1,11 @@
+## 0.9.0 (2022-04-24)
+
+
+- Merge branch 'dev' into origin/master
+- [ORG:FIX] Change order of installation
+- [ORG:FIX] Fix image encoding method
+- [ORG:ENH] Update README
+
 ## 0.8.4 (2022-04-24)
 
 
