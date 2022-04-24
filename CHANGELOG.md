@@ -1,3 +1,10 @@
+## 0.8.2 (2022-04-24)
+
+
+- Merge pull request #13 from AnHo4ng/dev
+- Fix
+- [ORG:FIX] Fix savefigure
+
 ## 0.8.1 (2022-04-24)
 
 
