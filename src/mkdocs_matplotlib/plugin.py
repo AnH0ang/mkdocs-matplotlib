@@ -90,7 +90,7 @@ class RenderPlugin(BasePlugin):
             is_hidecode = HIDECODE_SWITCH in code_lines
             is_hideoutput = HIDEOUTPUT_SWITCH in code_lines
 
-            temp_file = tempfile.NamedTemporaryFile(suffix=".png").name
+            temp_file = tempfile.NamedTemporaryFile(suffix=".svg").name
 
             # skip if not a multi line code cell
             if code_tag.parent.name != "pre":
@@ -108,8 +108,7 @@ class RenderPlugin(BasePlugin):
                         encoded = base64.b64encode(f.read()).decode("ascii")
                         img_tag = soup.new_tag(
                             "img",
-                            src="data:image/png;base64," + str(encoded),
-                            width="70%",
+                            src="data:image/svg+xml;base64," + str(encoded),
                         )
                         parent_code_tag = code_tag.parent
                         parent_code_tag.insert_after(img_tag)
