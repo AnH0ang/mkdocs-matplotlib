@@ -29,3 +29,5 @@ ypoints = np.array([3, 10])
 
 plt.plot(xpoints, ypoints)
 ```
+
+In addition you can add the comment `# mkdocs: hidecode` to hide  the code and and `# mkdocs: hideoutput` to hide the output image of the cell.
