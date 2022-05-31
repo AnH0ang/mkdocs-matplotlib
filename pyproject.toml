@@ -11,14 +11,16 @@ homepage = "https://mkdocs-matplotlib.readthedocs.io/en/latest/"
 documentation = "https://mkdocs-matplotlib.readthedocs.io/en/latest/"
 
 [tool.poetry.dependencies]
-python = ">=3.8.9,<4.0"
+python = "^3.8"
 mkdocs = ">=1.1.1"
 mkdocs-material = ">=8.1.9"
 beautifulsoup4 = ">=4.7.1"
 seaborn = ">=0.10.0"
+markdown = '!=3.3.5' # HACK: version 3.3.5 is currently broken
+psutil = ">=5.9.1"
 
 [tool.poetry.dev-dependencies]
-pygments = "2.11.2"             # HACK: upgrading this leads to a bug with mkdocstrings
+pygments = ">=2.11.2" # HACK: upgrading this leads to a bug with mkdocstrings
 black = ">=22.3.0"
 commitizen = ">=2.21.2"
 darglint = ">=1.8.1"
