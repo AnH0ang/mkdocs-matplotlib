@@ -1,3 +1,10 @@
+## 0.10.0 (2022-05-31)
+
+
+- Merge pull request #17 from AnHo4ng/dev
+- Update dependencies
+- [ORG:ENH] Make python version more permissable
+
 ## 0.9.1 (2022-04-24)
 
 
