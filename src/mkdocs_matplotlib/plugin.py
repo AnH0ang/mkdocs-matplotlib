@@ -102,6 +102,9 @@ class RenderPlugin(BasePlugin):
                     temp_file, code_tag.text, global_namespace, local_namespace
                 )
 
+                # get parent tag
+                parent_code_tag = code_tag.parent
+
                 # insert image tag
                 if not is_hideoutput and not is_empty:
                     with open(temp_file, "rb") as f:
@@ -110,11 +113,10 @@ class RenderPlugin(BasePlugin):
                             "img",
                             src="data:image/svg+xml;base64," + str(encoded),
                         )
-                        parent_code_tag = code_tag.parent
                         parent_code_tag.insert_after(img_tag)
                         img_tag.wrap(soup.new_tag("center"))
 
-                        if is_hidecode:
-                            parent_code_tag.decompose()
+                if is_hidecode:
+                    parent_code_tag.decompose()
 
         return str(soup)
