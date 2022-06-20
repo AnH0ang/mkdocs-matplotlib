@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mkdocs_matplotlib"
-version = "0.10.0"
+version = "0.10.1"
 description = "Live rendering of python code using matplotlib"
 authors = ["An Hoang <an.hoang@statworx.com>"]
 readme = "README.md"

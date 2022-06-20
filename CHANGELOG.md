@@ -1,3 +1,9 @@
+## 0.10.1 (2022-06-20)
+
+
+- Merge branch 'dev'
+- [OPS:FIX] Fix hide_code bug
+
 ## 0.10.0 (2022-05-31)
 
 
